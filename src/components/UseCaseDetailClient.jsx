@@ -231,13 +231,33 @@ function CountryItem({ value }) {
   );
 }
 
-function SourceRow({ url, label }) {
+function SourceRow({ url, label, textOnly = false }) {
   const [hovered, setHovered] = useState(false);
   const normalized = /^https?:\/\//i.test(url)
     ? url
     : /^www\./i.test(url)
       ? `https://${url}`
       : url;
+
+  if (textOnly) {
+    return (
+      <span
+        style={{
+          display: "flex",
+          alignItems: "center",
+          minHeight: "2.375rem",
+          fontFamily: FONT,
+          borderBottom: "1px solid #F1F1F1",
+          fontSize: "0.875rem",
+          fontWeight: 500,
+          color: "#0F1B2D",
+          padding: "0.625rem 0",
+        }}
+      >
+        {label || url}
+      </span>
+    );
+  }
 
   return (
     <a
@@ -710,6 +730,7 @@ export default function UseCaseDetailClient({ useCase }) {
                   key={`${src.url}-${idx}`}
                   url={src.url}
                   label={src.label}
+                  textOnly={src.label.trim().toLowerCase() === "africa digital id hackathon 2025"}
                 />
               ))}
             </div>
