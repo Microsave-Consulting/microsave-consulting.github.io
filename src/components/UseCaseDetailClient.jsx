@@ -231,7 +231,7 @@ function CountryItem({ value }) {
   );
 }
 
-function SourceRow({ url, label, textOnly = false }) {
+function SourceRow({ url, label, textOnly = false, sameTab = false }) {
   const [hovered, setHovered] = useState(false);
   const normalized = /^https?:\/\//i.test(url)
     ? url
@@ -262,8 +262,8 @@ function SourceRow({ url, label, textOnly = false }) {
   return (
     <a
       href={normalized}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={sameTab ? "_self" : "_blank"}
+      rel={sameTab ? undefined : "noopener noreferrer"}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -476,7 +476,7 @@ export default function UseCaseDetailClient({ useCase }) {
       const matched = hackathon.find(
         (h) => h.Title?.trim().toLowerCase() === raw.toLowerCase(),
       );
-      if (matched?.URL) return [{ url: matched.URL, label: matched.Title }];
+      if (matched?.URL) return [{ url: matched.URL, label: matched.Title, sameTab: true }];
     }
 
     const fallback = String(useCase.Links || useCase.Source || "").trim();
@@ -730,6 +730,7 @@ export default function UseCaseDetailClient({ useCase }) {
                   key={`${src.url}-${idx}`}
                   url={src.url}
                   label={src.label}
+                  sameTab={!!src.sameTab}
                   textOnly={src.label.trim().toLowerCase() === "africa digital id hackathon 2025"}
                 />
               ))}
