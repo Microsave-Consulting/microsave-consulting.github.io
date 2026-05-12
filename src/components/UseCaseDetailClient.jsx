@@ -259,11 +259,16 @@ function SourceRow({ url, label, textOnly = false, sameTab = false }) {
     );
   }
 
+  const isInternal = url.startsWith("/");
+  const Tag = isInternal ? Link : "a";
+  const extraProps = isInternal
+    ? {}
+    : { target: sameTab ? "_self" : "_blank", rel: sameTab ? undefined : "noopener noreferrer" };
+
   return (
-    <a
+    <Tag
       href={normalized}
-      target={sameTab ? "_self" : "_blank"}
-      rel={sameTab ? undefined : "noopener noreferrer"}
+      {...extraProps}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -312,7 +317,7 @@ function SourceRow({ url, label, textOnly = false, sameTab = false }) {
       >
         {label || url}
       </span>
-    </a>
+    </Tag>
   );
 }
 
