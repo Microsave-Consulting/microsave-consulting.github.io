@@ -360,16 +360,17 @@ export default function Header() {
     </svg>
   </button>
   <div className="hdr-dropdown">
-    {hackathons.map((h) => (
-      <a
-        key={h.ID}
-        href={h.URL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {h.Title}
-      </a>
-    ))}
+    {hackathons.map((h) =>
+      h.URL.startsWith("/") ? (
+        <Link key={h.ID} href={h.URL}>
+          {h.Title}
+        </Link>
+      ) : (
+        <a key={h.ID} href={h.URL} target="_blank" rel="noopener noreferrer">
+          {h.Title}
+        </a>
+      )
+    )}
   </div>
 </div>
               <Link
@@ -425,20 +426,33 @@ export default function Header() {
                     <div className="mob-drop-divider" />
                     <p className="mob-drop-label">Hackathons</p>
 
-                    {hackathons.map((h) => (
-                      <a
-                        key={h.ID}
-                        href={h.URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        role="menuitem"
-                        className="mob-drop-item"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        <span className="mob-dot" />
-                        {h.Title}
-                      </a>
-                    ))}
+                    {hackathons.map((h) =>
+                      h.URL.startsWith("/") ? (
+                        <Link
+                          key={h.ID}
+                          href={h.URL}
+                          role="menuitem"
+                          className="mob-drop-item"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="mob-dot" />
+                          {h.Title}
+                        </Link>
+                      ) : (
+                        <a
+                          key={h.ID}
+                          href={h.URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          role="menuitem"
+                          className="mob-drop-item"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="mob-dot" />
+                          {h.Title}
+                        </a>
+                      )
+                    )}
 
                     <div className="mob-drop-divider" />
                     <button
