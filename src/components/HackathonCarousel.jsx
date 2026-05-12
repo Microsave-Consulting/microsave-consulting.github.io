@@ -2,6 +2,7 @@
 // src/components/HackathonCarousel.jsx
 
 import { useState } from "react";
+import Link from "next/link";
 import { BASE_PATH } from "@/lib/siteConfig";
 
 const FONT =
@@ -351,9 +352,15 @@ function CardInner({ item }) {
       )}
 
       {item.URL ? (
-        <a href={item.URL} className="hc-btn">
-          Learn more →
-        </a>
+        item.URL.startsWith("/") ? (
+          <Link href={item.URL} className="hc-btn">
+            Learn more →
+          </Link>
+        ) : (
+          <a href={item.URL} className="hc-btn" target="_blank" rel="noopener noreferrer">
+            Learn more →
+          </a>
+        )
       ) : (
         <button className="hc-btn" disabled>
           Learn more →
