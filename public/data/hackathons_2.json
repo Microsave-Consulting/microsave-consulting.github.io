@@ -15,11 +15,11 @@
     "Partner": "DICT",
     "URL": "/png_ideathon",
     "ID": 7,
-    "Modified": "2026-05-11T11:15:47Z",
+    "Modified": "2026-05-12T07:09:21Z",
     "Created": "2026-03-27T07:11:08Z",
     "AuthorId": 12,
     "EditorId": 12,
-    "OData__UIVersionString": "5.0",
+    "OData__UIVersionString": "6.0",
     "Attachments": false,
     "GUID": "7ceb541e-418c-4f20-a444-12f88b074bec"
   },
@@ -39,11 +39,11 @@
     "Partner": "Upanzi Network1",
     "URL": "/africa_hackathon",
     "ID": 5,
-    "Modified": "2026-05-11T11:15:42Z",
+    "Modified": "2026-05-12T07:09:13Z",
     "Created": "2026-03-27T06:52:23Z",
     "AuthorId": 12,
     "EditorId": 12,
-    "OData__UIVersionString": "12.0",
+    "OData__UIVersionString": "13.0",
     "Attachments": false,
     "GUID": "0f50e2c8-d061-4ca7-be45-c04d6cf8045a"
   }
