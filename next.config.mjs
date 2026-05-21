@@ -24,6 +24,7 @@ const nextConfig = {
     unoptimized: true, // required for GitHub Pages static export
   },
   output: "export",   // required for GitHub Pages
+  trailingSlash: true, // generates dir/index.html instead of dir.html for reliable GitHub Pages routing
 };
 
 export default nextConfig;
