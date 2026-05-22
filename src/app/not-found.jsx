@@ -2,20 +2,18 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { normalizeInternalHackathonPath } from "@/lib/hackathonRoutes";
 
 export default function NotFound() {
-  const pathname = usePathname() || "/";
-
   useEffect(() => {
+    const pathname = window.location.pathname || "/";
     const normalizedPath = normalizeInternalHackathonPath(pathname);
     if (normalizedPath === pathname) return;
 
-    const query = typeof window !== "undefined" ? window.location.search : "";
+    const query = window.location.search || "";
     const target = `${normalizedPath}${query ? `?${query}` : ""}`;
     window.location.replace(target);
-  }, [pathname]);
+  }, []);
 
   return (
     <main
