@@ -189,17 +189,11 @@ export default function AfricaRegistration() {
                 <a className="reg-link" href="mailto:upanzi@andrew.cmu.edu" target="_blank" rel="noopener noreferrer">
                   upanzi@andrew.cmu.edu
                 </a>
-              </div>
+              </div>              
               <div className="reg-row">
                 <img className="reg-icon" src={`${bp}/img/email.svg`} alt="email" />
-                <a className="reg-link" href="mailto:pavanesh.dwivedi@microsave.net" target="_blank" rel="noopener noreferrer">
-                  pavanesh.dwivedi@microsave.net
-                </a>
-              </div>
-              <div className="reg-row">
-                <img className="reg-icon" src={`${bp}/img/email.svg`} alt="email" />
-                <a className="reg-link" href="mailto:arnav.nigam@microsave.net" target="_blank" rel="noopener noreferrer">
-                  arnav.nigam@microsave.net
+                <a className="reg-link" href="mailto:digitalidinnovation@microsave.net" target="_blank" rel="noopener noreferrer">
+                  digitalidinnovation@microsave.net
                 </a>
               </div>
             </div>

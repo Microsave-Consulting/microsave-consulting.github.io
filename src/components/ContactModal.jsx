@@ -290,7 +290,7 @@ export default function ContactModal({ isOpen, onClose }) {
             </p>
 
             <a
-              href="mailto:arnav.nigam@microsave.net"
+              href="mailto:digitalidinnovation@microsave.net"
               className="cm-email-link"
             >
               <svg
