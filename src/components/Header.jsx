@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ContactModal from "@/components/ContactModal";
 import { BASE_PATH } from "@/lib/siteConfig";
+import { normalizeInternalHackathonPath } from "@/lib/hackathonRoutes";
 import hackathons from "../../public/data/hackathons_2.json";
 
 const FONT = "'Albert Sans', sans-serif";
@@ -360,17 +361,18 @@ export default function Header() {
     </svg>
   </button>
   <div className="hdr-dropdown">
-    {hackathons.map((h) =>
-      h.URL.startsWith("/") ? (
-        <Link key={h.ID} href={h.URL}>
+    {hackathons.map((h) => {
+      const href = normalizeInternalHackathonPath(h.URL);
+      return href.startsWith("/") ? (
+        <Link key={h.ID} href={href}>
           {h.Title}
         </Link>
       ) : (
-        <a key={h.ID} href={h.URL} target="_blank" rel="noopener noreferrer">
+        <a key={h.ID} href={href} target="_blank" rel="noopener noreferrer">
           {h.Title}
         </a>
-      )
-    )}
+      );
+    })}
   </div>
 </div>
               <Link
@@ -426,11 +428,12 @@ export default function Header() {
                     <div className="mob-drop-divider" />
                     <p className="mob-drop-label">Hackathons</p>
 
-                    {hackathons.map((h) =>
-                      h.URL.startsWith("/") ? (
+                    {hackathons.map((h) => {
+                      const href = normalizeInternalHackathonPath(h.URL);
+                      return href.startsWith("/") ? (
                         <Link
                           key={h.ID}
-                          href={h.URL}
+                          href={href}
                           role="menuitem"
                           className="mob-drop-item"
                           onClick={() => setMobileOpen(false)}
@@ -441,7 +444,7 @@ export default function Header() {
                       ) : (
                         <a
                           key={h.ID}
-                          href={h.URL}
+                          href={href}
                           target="_blank"
                           rel="noopener noreferrer"
                           role="menuitem"
@@ -451,8 +454,8 @@ export default function Header() {
                           <span className="mob-dot" />
                           {h.Title}
                         </a>
-                      )
-                    )}
+                      );
+                    })}
 
                     <div className="mob-drop-divider" />
                     <button

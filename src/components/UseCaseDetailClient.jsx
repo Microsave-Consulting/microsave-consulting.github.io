@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BASE_PATH } from "@/lib/siteConfig";
+import { normalizeInternalHackathonPath } from "@/lib/hackathonRoutes";
 import hackathon from "../../public/data/hackathon_urls.json";
 
 const FONT =
@@ -233,11 +234,12 @@ function CountryItem({ value }) {
 
 function SourceRow({ url, label, textOnly = false, sameTab = false }) {
   const [hovered, setHovered] = useState(false);
-  const normalized = /^https?:\/\//i.test(url)
-    ? url
-    : /^www\./i.test(url)
-      ? `https://${url}`
-      : url;
+  const normalizedInternal = normalizeInternalHackathonPath(url);
+  const normalized = /^https?:\/\//i.test(normalizedInternal)
+    ? normalizedInternal
+    : /^www\./i.test(normalizedInternal)
+      ? `https://${normalizedInternal}`
+      : normalizedInternal;
 
   if (textOnly) {
     return (
@@ -259,7 +261,7 @@ function SourceRow({ url, label, textOnly = false, sameTab = false }) {
     );
   }
 
-  const isInternal = url.startsWith("/");
+  const isInternal = normalizedInternal.startsWith("/");
   const Tag = isInternal ? Link : "a";
   const extraProps = isInternal
     ? {}
@@ -481,7 +483,13 @@ export default function UseCaseDetailClient({ useCase }) {
       const matched = hackathon.find(
         (h) => h.Title?.trim().toLowerCase() === raw.toLowerCase(),
       );
-      if (matched?.URL) return [{ url: matched.URL, label: matched.Title, sameTab: true }];
+      if (matched?.URL) {
+        return [{
+          url: normalizeInternalHackathonPath(matched.URL),
+          label: matched.Title,
+          sameTab: true,
+        }];
+      }
     }
 
     const fallback = String(useCase.Links || useCase.Source || "").trim();

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BASE_PATH } from "@/lib/siteConfig";
+import { normalizeInternalHackathonPath } from "@/lib/hackathonRoutes";
 
 const FONT =
   '"Albert Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
@@ -310,6 +311,7 @@ function CardInner({ item }) {
   const cfg = STATUS_CONFIG[status] || STATUS_CONFIG["Completed"];
   const isLive = cfg.isLive;
   const logoSrc = getPartnerLogoSrc(item.Partner);
+  const normalizedUrl = normalizeInternalHackathonPath(item.URL);
 
   const cardContent = (
     <div className={`hc-card ${isLive ? "hc-live" : "hc-completed"}`}>
@@ -351,13 +353,13 @@ function CardInner({ item }) {
         </div>
       )}
 
-      {item.URL ? (
-        item.URL.startsWith("/") ? (
-          <Link href={item.URL} className="hc-btn">
+      {normalizedUrl ? (
+        normalizedUrl.startsWith("/") ? (
+          <Link href={normalizedUrl} className="hc-btn">
             Learn more →
           </Link>
         ) : (
-          <a href={item.URL} className="hc-btn" target="_blank" rel="noopener noreferrer">
+          <a href={normalizedUrl} className="hc-btn" target="_blank" rel="noopener noreferrer">
             Learn more →
           </a>
         )
