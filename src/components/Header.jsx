@@ -363,14 +363,15 @@ export default function Header() {
   <div className="hdr-dropdown">
     {hackathons.map((h) => {
       const href = normalizeInternalHackathonPath(h.URL);
-      return href.startsWith("/") ? (
-        <Link key={h.ID} href={href}>
-          {h.Title}
-        </Link>
-      ) : (
+      const openNewTab = h.NewTab || !href.startsWith("/");
+      return openNewTab ? (
         <a key={h.ID} href={href} target="_blank" rel="noopener noreferrer">
           {h.Title}
         </a>
+      ) : (
+        <Link key={h.ID} href={href}>
+          {h.Title}
+        </Link>
       );
     })}
   </div>
@@ -430,18 +431,8 @@ export default function Header() {
 
                     {hackathons.map((h) => {
                       const href = normalizeInternalHackathonPath(h.URL);
-                      return href.startsWith("/") ? (
-                        <Link
-                          key={h.ID}
-                          href={href}
-                          role="menuitem"
-                          className="mob-drop-item"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          <span className="mob-dot" />
-                          {h.Title}
-                        </Link>
-                      ) : (
+                      const openNewTab = h.NewTab || !href.startsWith("/");
+                      return openNewTab ? (
                         <a
                           key={h.ID}
                           href={href}
@@ -454,6 +445,17 @@ export default function Header() {
                           <span className="mob-dot" />
                           {h.Title}
                         </a>
+                      ) : (
+                        <Link
+                          key={h.ID}
+                          href={href}
+                          role="menuitem"
+                          className="mob-drop-item"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="mob-dot" />
+                          {h.Title}
+                        </Link>
                       );
                     })}
 

@@ -1,7 +1,7 @@
 "use client";
 // src/components/HackathonCarousel.jsx
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BASE_PATH } from "@/lib/siteConfig";
 import { normalizeInternalHackathonPath } from "@/lib/hackathonRoutes";
@@ -22,6 +22,26 @@ const STATUS_CONFIG = {
 
 export default function HackathonCarousel({ items }) {
   const data = items || [];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = data.length;
+  const prevIndex = (activeIndex - 1 + total) % total;
+  const nextIndex = (activeIndex + 1) % total;
+
+  const goPrev = () => {
+    setActiveIndex((current) => (current - 1 + total) % total);
+  };
+
+  const goNext = () => {
+    setActiveIndex((current) => (current + 1) % total);
+  };
+
+  useEffect(() => {
+    if (total < 2) return;
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % total);
+    }, 4200);
+    return () => clearInterval(interval);
+  }, [total]);
 
   return (
     <>
@@ -33,7 +53,7 @@ export default function HackathonCarousel({ items }) {
           margin-left: calc(50% - 50vw);
           margin-right: calc(50% - 50vw);
           background: #eef1fb;
-          padding: clamp(24px, 3vw, 48px) 0 clamp(24px, 3vw, 44px);
+          padding: 20px 0 24px;
           box-sizing: border-box;
           font-family: ${FONT};
         }
@@ -48,7 +68,7 @@ export default function HackathonCarousel({ items }) {
 
         /* ── Heading ── */
         .hc-header {
-          margin-bottom: clamp(14px, 1.5vw, 24px);
+          margin-bottom: 16px;
           width: 100%;
         }
         .hc-heading {
@@ -58,31 +78,142 @@ export default function HackathonCarousel({ items }) {
           line-height: 1;
           letter-spacing: -0.015em;
           color: #1b66d1;
-       margin: 0 0 clamp(32px, 3.64vw, 70px) 0;
+       margin: 0 0 32px 0;
           padding: 0;
           text-align: center;
           display: block;
         }
 
-        /* ── Grid ── */
-        .hc-grid {
+        /* ── Carousel ── */
+        .hc-carousel {
+          position: relative;
+          width: 100%;
+          max-width: 780px;
+          margin: 0 auto;
           display: flex;
-          flex-wrap: wrap;
-          gap: clamp(16px, 7vw, 100px);
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
         }
+
+        .hc-carousel-viewport {
+          overflow: visible;
+          width: 100%;
+          height: 350px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 32px;
+          box-shadow: 0 30px 70px rgba(15, 23, 42, 0.14);
+          
+          backdrop-filter: blur(15px);
+        }
+
+        .hc-track {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
         .hc-grid-item {
-          flex: 1 1 clamp(260px, 40%, 520px);
-          min-width: 0;
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 320ms ease, opacity 320ms ease, filter 320ms ease;
+          z-index: 1;
           box-sizing: border-box;
+        }
+
+        .hc-grid-item.active {
+          z-index: 3;
+          opacity: 1;
+          transform: translateY(0) scale(1.12);
+          filter: none;
+        }
+
+        .hc-grid-item.prev,
+        .hc-grid-item.next {
+          z-index: 2;
+          opacity: 0.55;
+          transform: translateY(24px) scale(0.8);
+          filter: blur(3px) saturate(0.9);
+        }
+
+        .hc-grid-item.prev { transform: translate(-45%, 24px) scale(0.8); }
+        .hc-grid-item.next { transform: translate(45%, 24px) scale(0.8); }
+
+        .hc-grid-item.hidden {
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(35px) scale(0.88);
+        }
+
+        .hc-carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 16px;
+        }
+
+        .hc-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 9999px;
+          background: rgba(31, 58, 109, 0.25);
+          border: 1px solid rgba(31, 58, 109, 0.15);
+          cursor: pointer;
+        }
+
+        .hc-dot.active {
+          background: #1f3a6d;
+        }
+
+        .hc-nav {
+          width: 3rem;
+          height: 3rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 9999px;
+          border: 1px solid rgba(31, 58, 109, 0.16);
+          background: #ffffff;
+          color: #1f3a6d;
+          cursor: pointer;
+          font-size: 1.65rem;
+          line-height: 1;
+          transition: transform 160ms ease, background 160ms ease;
+          box-shadow: 0 12px 24px rgba(31, 58, 109, 0.08);
+        }
+
+        .hc-nav:hover {
+          transform: translateY(-1px);
+          background: #f8fafc;
+        }
+
+        .hc-nav:disabled {
+          opacity: 0.35;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        @media (max-width: 600px) {
+          .hc-carousel { gap: 0.5rem; }
+          .hc-nav { width: 2.25rem; height: 2.25rem; font-size: 1.2rem; }
         }
 
         /* ── Card ── */
         .hc-card {
           width: 100%;
+          height: 100%;
           box-sizing: border-box;
           border-radius: 20px;
-          padding: clamp(1rem, 1.46vw, 1.75rem) clamp(1rem, 1.46vw, 1.75rem) clamp(0.875rem, 1.25vw, 1.5rem);
-          min-height: clamp(220px, 22vw, 400px);
+          padding: 28px 24px 24px;
+          min-height: auto;
           display: flex;
           flex-direction: column;
           gap: 0;
@@ -91,11 +222,11 @@ export default function HackathonCarousel({ items }) {
         }
 
         /* Per-child spacing */
-        .hc-card .hc-badge   { margin-bottom: clamp(0.5rem, 0.63vw, 0.75rem); }
-        .hc-card .hc-title   { margin-bottom: clamp(0.25rem, 0.31vw, 0.375rem); }
-        .hc-card .hc-desc    { margin-bottom: clamp(0.5rem, 0.63vw, 0.75rem); flex: .5; }
-        .hc-card .hc-meta    { margin-bottom: clamp(0.5rem, 0.63vw, 0.75rem); flex: .5; }
-        .hc-card .hc-partner { margin-bottom: clamp(0.375rem, 0.52vw, 0.625rem); }
+        .hc-card .hc-badge   { margin-bottom: 12px; }
+        .hc-card .hc-title   { margin-bottom: 8px; }
+        .hc-card .hc-desc    { margin-bottom: 16px; flex: 1; }
+        .hc-card .hc-meta    { margin-bottom: 12px; }
+        .hc-card .hc-partner { margin-bottom: 16px; }
 
         /* COMPLETED */
         .hc-card.hc-completed {
@@ -288,11 +419,49 @@ export default function HackathonCarousel({ items }) {
             </h2>
           </div>
 
-          <div className="hc-grid">
-            {data.map((item, i) => (
-              <div key={item.ID ?? i} className="hc-grid-item">
-                <CardInner item={item} />
+          <div className="hc-carousel">
+            <button
+              className="hc-nav"
+              onClick={goPrev}
+              disabled={total < 2}
+              aria-label="Previous hackathon"
+            >
+              ‹
+            </button>
+
+            <div className="hc-carousel-viewport">
+              <div className="hc-track">
+                {data.map((item, i) => {
+                  const itemState =
+                    i === activeIndex ? "active" : i === prevIndex ? "prev" : i === nextIndex ? "next" : "hidden";
+                  return (
+                    <div key={item.ID ?? i} className={`hc-grid-item ${itemState}`}>
+                      <CardInner item={item} />
+                    </div>
+                  );
+                })}
               </div>
+            </div>
+
+            <button
+              className="hc-nav"
+              onClick={goNext}
+              disabled={total < 2}
+              aria-label="Next hackathon"
+            >
+              ›
+            </button>
+          </div>
+
+          <div className="hc-carousel-dots">
+            {data.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`hc-dot ${i === activeIndex ? "active" : ""}`}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`View hackathon ${i + 1}`}
+              />
             ))}
           </div>
         </div>
