@@ -262,13 +262,13 @@ export default function PngHackathon2026Hero() {
 
           <p className="phk-hero-regclose">REGISTRATION CLOSES JUNE 21, 2026</p>
 
-          <a className="phk-hero-btn" href="#register">Apply for Hackathon</a>
+          <a className="phk-hero-btn" href="https://hackathon.dts.gov.pg/register" target="_blank" rel="noopener noreferrer">Apply for Hackathon</a>
 
           <div className="phk-hero-orgs">
             <p className="phk-hero-orgs-label">ORGANIZED BY</p>
             <div className="phk-hero-orgs-logos">
               <img src={`${bp}/PNG.svg`} alt="Department of ICT, Papua New Guinea" />
-              <img src={`${bp}/DTS%20Logo.svg`} alt="DTS26" />
+              <img src={`${bp}/dts_logo.svg`} alt="DTS26" />
               <img src={`${bp}/MSC_White_logo.svg`} alt="MicroSave Consulting" />
             </div>
           </div>

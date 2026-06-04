@@ -233,7 +233,7 @@ export default function PngHackathon2026Tracks() {
       <section id="tracks" className="phk-tracks">
         {/* Header */}
         <div className="phk-tracks-header">
-          <h2 className="phk-tracks-title">Two Tracks. One Mission</h2>
+          <h2 className="phk-tracks-title">Two key tracks</h2>
           <div className="phk-tracks-line" />
           <p className="phk-tracks-subtitle">
             Select the track that best fits your team's profile and impact goals.

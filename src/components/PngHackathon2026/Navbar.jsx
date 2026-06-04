@@ -161,7 +161,7 @@ export default function PngHackathon2026Navbar() {
                 </a>
               ))}
             </div>
-            <a className="phk-nav-cta" href="#register">
+            <a className="phk-nav-cta" href="https://hackathon.dts.gov.pg/register" target="_blank" rel="noopener noreferrer" suppressHydrationWarning>
               REGISTER NOW
             </a>
           </div>
@@ -191,9 +191,12 @@ export default function PngHackathon2026Navbar() {
         ))}
         <a
           className="phk-nav-cta"
-          href="#register"
+          href="https://hackathon.dts.gov.pg/register"
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => setOpen(false)}
           style={{ alignSelf: "flex-start" }}
+          suppressHydrationWarning
         >
           REGISTER NOW
         </a>
