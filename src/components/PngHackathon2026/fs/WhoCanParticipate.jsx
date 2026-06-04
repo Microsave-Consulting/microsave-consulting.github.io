@@ -141,7 +141,9 @@ export default function FsWhoCanParticipate() {
           </div>
 
           <div className="fs-wcp-card">
-            <img className="fs-wcp-icon" src={`${bp}/rocket%20logo.svg`} alt="Financial Sector" />
+            <svg className="fs-wcp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000" aria-hidden="true">
+              <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zM11.5 1L2 6v2h19V6L11.5 1z"/>
+            </svg>
             <p className="fs-wcp-card-title">Financial sector players</p>
             <p className="fs-wcp-card-desc">
               Private-sector entities operating in financial services.
