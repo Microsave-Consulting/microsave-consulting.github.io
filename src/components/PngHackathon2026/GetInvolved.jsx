@@ -125,8 +125,7 @@ export default function PngHackathon2026GetInvolved() {
 
         {/* Body paragraphs */}
         <p className="phk-gi-body">
-          We welcome public and private sector entities and multilateral organizations that want to support
-          Papua New Guinea's digital transformation journey....
+          We welcome public and private sector entities and multilateral organizations that want to support Papua New Guinea's digital transformation journey to partner with us.
         </p>
         <p className="phk-gi-body">
           If your organization wishes to leverage this platform to explore SevisPass use cases for secure
