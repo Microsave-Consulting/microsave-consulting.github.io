@@ -137,11 +137,17 @@ export default function PngHackathon2026Hero() {
           margin: 0;
         }
 
+        @keyframes phk-btn-glow {
+          0%, 100% { box-shadow: 0 0 1.25rem 0 rgba(231, 161, 89, 0.5), 0 0 0 0 rgba(231, 161, 89, 0); }
+          50%       { box-shadow: 0 0 2rem 0 rgba(231, 161, 89, 0.75), 0 0 2.5rem 0.5rem rgba(216, 84, 71, 0.25); }
+        }
+
         /* Apply button — Figma: 280×42, radius 9999, padding ~9/48/9/48, 600 21px #000 */
         .phk-hero-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          gap: 0.5rem;
           padding: 0.5625rem 3rem;
           background: rgba(255, 255, 255, 0.95);
           border-radius: 9999px;
@@ -152,11 +158,18 @@ export default function PngHackathon2026Hero() {
           color: #000000;
           text-decoration: none;
           white-space: nowrap;
-          transition: background 0.2s, transform 0.2s;
+          animation: phk-btn-glow 2.8s ease-in-out infinite;
+          transition: background 0.25s, transform 0.25s, box-shadow 0.25s, letter-spacing 0.25s;
         }
         .phk-hero-btn:hover {
           background: #ffffff;
-          transform: translateY(-1px);
+          transform: translateY(-3px) scale(1.03);
+          box-shadow: 0 8px 2rem rgba(216, 84, 71, 0.35), 0 0 2.5rem rgba(231, 161, 89, 0.4);
+          letter-spacing: 0.01em;
+          animation: none;
+        }
+        .phk-hero-btn:active {
+          transform: translateY(-1px) scale(1.01);
         }
 
         /* Organized by — line starts from left column edge and extends into illustration */

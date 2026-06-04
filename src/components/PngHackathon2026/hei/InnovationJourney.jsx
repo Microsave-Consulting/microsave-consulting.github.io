@@ -154,6 +154,7 @@ export default function HeiInnovationJourney() {
           flex-shrink: 0;
           width: clamp(4rem, 5.208vw, 6.25rem);
           gap: 0;
+          padding-top: clamp(1.25rem, 1.667vw, 2rem);
         }
 
         .hei-ij-label-dot {

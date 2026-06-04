@@ -14,6 +14,8 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [clientHackathons, setClientHackathons] = useState([]);
+  useEffect(() => { setClientHackathons(hackathons); }, []);
   const dropRef = useRef(null);
 
   useEffect(() => {
@@ -361,15 +363,16 @@ export default function Header() {
     </svg>
   </button>
   <div className="hdr-dropdown">
-    {hackathons.map((h) => {
+    {clientHackathons.map((h) => {
       const href = normalizeInternalHackathonPath(h.URL);
       const openNewTab = h.NewTab || !href.startsWith("/");
-      return openNewTab ? (
-        <a key={h.ID} href={href} target="_blank" rel="noopener noreferrer">
-          {h.Title}
-        </a>
-      ) : (
-        <Link key={h.ID} href={href}>
+      return (
+        <Link
+          key={h.ID}
+          href={href}
+          suppressHydrationWarning
+          {...(openNewTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
           {h.Title}
         </Link>
       );
