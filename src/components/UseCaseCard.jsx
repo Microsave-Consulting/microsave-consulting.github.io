@@ -2,6 +2,7 @@
 // src/components/UseCaseCard.jsx
 
 import { useState } from "react";
+import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
 
 const FONT =
@@ -166,21 +167,24 @@ export default function UseCaseCard({ uc, onOpen }) {
   const country = Array.isArray(uc.Country) ? uc.Country[0] : uc.Country || "—";
   const maturity = uc.MaturityLevel || "—";
   const description = uc.Description || uc.Remarks || uc.Summary || "";
+  const ucId = uc.ID ?? uc.Id;
 
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={() => onOpen?.(uc)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
+    <Link
+      href={`/use-cases/${ucId}`}
+      onClick={(e) => {
+        // Regular click: open in-page modal instead of navigating
+        if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button !== 1) {
           e.preventDefault();
           onOpen?.(uc);
         }
       }}
+      style={{ textDecoration: "none", color: "inherit", display: "block" }}
+      aria-label={`Open details for ${uc.Title || "use case"}`}
+    >
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      aria-label={`Open details for ${uc.Title || "use case"}`}
       style={{
         borderRadius: "clamp(10px, 0.83vw, 16px)",
         border: "1px solid #E8ECF4",
@@ -318,5 +322,6 @@ export default function UseCaseCard({ uc, onOpen }) {
         </span>
       </div>
     </div>
+    </Link>
   );
 }
