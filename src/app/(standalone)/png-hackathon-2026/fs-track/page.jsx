@@ -1,4 +1,4 @@
-import PngHackathon2026Navbar from "@/components/PngHackathon2026/Navbar";
+import PngHackathon2026Navbar from "@/components/PngHackathon2026/NavbarWrapper";
 import PngHackathon2026Footer from "@/components/PngHackathon2026/Footer";
 import FsHero from "@/components/PngHackathon2026/fs/Hero";
 import FsWhoCanParticipate from "@/components/PngHackathon2026/fs/WhoCanParticipate";
@@ -16,14 +16,12 @@ export default function FSTrackPage() {
   return (
     <div>
       
-      
         <FsHero />
         <FsWhoCanParticipate />
         <FsInnovationJourney />
         {/* <FsTimeline /> */}
         <FsPrizes />
         
-      
     </div>
   );
 }

@@ -473,6 +473,8 @@ export default function HackathonCarousel({ items }) {
 /* ─── CardInner ─────────────────────────────────────────────── */
 function CardInner({ item }) {
   const [logoError, setLogoError] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   if (!item) return null;
 
@@ -524,7 +526,11 @@ function CardInner({ item }) {
 
       {normalizedUrl ? (
         normalizedUrl.startsWith("/") ? (
-          <Link href={normalizedUrl} className="hc-btn">
+          <Link
+            href={normalizedUrl}
+            className="hc-btn"
+            {...(mounted && normalizedUrl === "/png-hackathon-2026" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
             Learn more →
           </Link>
         ) : (

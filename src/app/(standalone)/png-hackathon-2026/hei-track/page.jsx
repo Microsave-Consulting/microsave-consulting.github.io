@@ -1,3 +1,5 @@
+import PngHackathon2026Navbar from "@/components/PngHackathon2026/NavbarWrapper";
+import PngHackathon2026Footer from "@/components/PngHackathon2026/Footer";
 import HeiHero from "@/components/PngHackathon2026/hei/Hero";
 import HeiWhoCanParticipate from "@/components/PngHackathon2026/hei/WhoCanParticipate";
 import HeiInnovationJourney from "@/components/PngHackathon2026/hei/InnovationJourney";
@@ -12,10 +14,12 @@ export const metadata = {
 export default function HEITrackPage() {
   return (
     <div>
-      <HeiHero />
-      <HeiWhoCanParticipate />
-      <HeiInnovationJourney />
-      <HeiPrizes />
+     
+        <HeiHero />
+        <HeiWhoCanParticipate />
+        <HeiInnovationJourney />
+        <HeiPrizes />
+      
     </div>
   );
 }

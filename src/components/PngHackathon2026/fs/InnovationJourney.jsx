@@ -146,6 +146,7 @@ export default function FsInnovationJourney() {
           flex-shrink: 0;
           width: clamp(4rem, 5.208vw, 6.25rem);
           gap: 0;
+        padding-top: clamp(1.25rem, 1.667vw, 2rem);
         }
 
         .fs-ij-label-dot {
@@ -377,8 +378,9 @@ export default function FsInnovationJourney() {
           <div className="fs-ij-row">
             <div className="fs-ij-left">
               <div className="fs-ij-label-dot">
-                <span className="fs-ij-phase-name">Phase 1</span>
                 <span className="fs-ij-dot" />
+                <span className="fs-ij-phase-name">Phase 1</span>
+                
               </div>
             </div>
             <div className="fs-ij-right">
@@ -401,8 +403,9 @@ export default function FsInnovationJourney() {
           <div className="fs-ij-row">
             <div className="fs-ij-left">
               <div className="fs-ij-label-dot">
-                <span className="fs-ij-phase-name">Phase 2</span>
                 <span className="fs-ij-dot" />
+                <span className="fs-ij-phase-name">Phase 2</span>
+                
               </div>
             </div>
             <div className="fs-ij-right">
@@ -422,8 +425,9 @@ export default function FsInnovationJourney() {
           <div className="fs-ij-row">
             <div className="fs-ij-left">
               <div className="fs-ij-label-dot">
-                <span className="fs-ij-phase-name">Phase 3</span>
                 <span className="fs-ij-dot" />
+                <span className="fs-ij-phase-name">Phase 3</span>
+                
               </div>
             </div>
             <div className="fs-ij-right">
