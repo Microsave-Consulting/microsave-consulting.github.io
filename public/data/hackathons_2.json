@@ -1,5 +1,28 @@
 [
-  
+  {
+    "FileSystemObjectType": 0,
+    "Id": 8,
+    "ServerRedirectedEmbedUri": null,
+    "ServerRedirectedEmbedUrl": "",
+    "ContentTypeId": "0x0100FF04AEB6E91CD949A903773A684966B400D7B3B269F756D248A7EA00847D58F858",
+    "Title": "PNG National Digital ID Hackathon 2026",
+    "OData__ColorTag": null,
+    "ComplianceAssetId": null,
+    "Timeline": "2026",
+    "Status": "Live",
+    "Description": "PNG National Digital ID Hackathon 2026",
+    "Region": "Papua New Guinea",
+    "Partner": "DICT",
+    "URL": "/png-hackathon-2026",
+    "ID": 8,
+    "Modified": "2026-06-04T14:29:32Z",
+    "Created": "2026-06-03T16:30:50Z",
+    "AuthorId": 12,
+    "EditorId": 12,
+    "OData__UIVersionString": "9.0",
+    "Attachments": false,
+    "GUID": "c806a246-c116-464e-960a-4caff93de323"
+  },
   {
     "FileSystemObjectType": 0,
     "Id": 7,
@@ -47,31 +70,5 @@
     "OData__UIVersionString": "14.0",
     "Attachments": false,
     "GUID": "0f50e2c8-d061-4ca7-be45-c04d6cf8045a"
-  }
-  ,
-  {
-    "FileSystemObjectType": 0,
-    "Id": 8,
-    "ServerRedirectedEmbedUri": null,
-    "ServerRedirectedEmbedUrl": "",
-    "ContentTypeId": "0x0100FF04AEB6E91CD949A903773A684966B400D7B3B269F756D248A7EA00847D58F858",
-    "Title": "PNG National Digital ID Hackathon 2026",
-    "OData__ColorTag": null,
-    "ComplianceAssetId": null,
-    "Timeline": "2026",
-    "Status": "Live",
-    "Description": "PNG National Digital ID Hackathon 2026",
-    "Region": "Papua New Guinea",
-    "Partner": "DICT",
-    "URL": "/png-hackathon-2026",
-    "NewTab": true,
-    "ID": 8,
-    "Modified": "2026-06-03T00:00:00Z",
-    "Created": "2026-06-03T00:00:00Z",
-    "AuthorId": 12,
-    "EditorId": 12,
-    "OData__UIVersionString": "1.0",
-    "Attachments": false,
-    "GUID": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
   }
 ]
