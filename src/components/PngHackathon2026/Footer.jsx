@@ -176,12 +176,23 @@ export default function PngHackathon2026Footer() {
           {/* Left — Contact */}
           <div className="phk-footer-contact">
             <p className="phk-footer-heading">Contact and learn more</p>
-            <p className="phk-footer-org">MSC (MicroSave Consulting)</p>
             <div className="phk-footer-contact-items">
               <div className="phk-footer-contact-row">
                 <EmailIcon />
                 <a href="mailto:digitalidinnovation@microsave.net">
                   digitalidinnovation@microsave.net
+                </a>
+                <span>|</span>
+                <a href="mailto:hackathon@ict.gov.pg">
+                  hackathon@ict.gov.pg
+                </a>
+              </div>
+              
+              
+              <div className="phk-footer-contact-row">
+                <GlobeIcon />
+                <a href="https://www.ict.gov.pg" target="_blank" rel="noopener noreferrer">
+                  www.ict.gov.pg
                 </a>
               </div>
               <div className="phk-footer-contact-row">
