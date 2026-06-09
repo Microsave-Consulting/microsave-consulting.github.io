@@ -104,10 +104,6 @@ export default function HackathonCarousel({ items }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 32px;
-          box-shadow: 0 30px 70px rgba(15, 23, 42, 0.14);
-          
-          backdrop-filter: blur(15px);
         }
 
         .hc-track {
@@ -142,6 +138,7 @@ export default function HackathonCarousel({ items }) {
           opacity: 0.55;
           transform: translateY(24px) scale(0.8);
           filter: blur(3px) saturate(0.9);
+          pointer-events: none;
         }
 
         .hc-grid-item.prev { transform: translate(-45%, 24px) scale(0.8); }
@@ -201,10 +198,6 @@ export default function HackathonCarousel({ items }) {
           transform: none;
         }
 
-        @media (max-width: 600px) {
-          .hc-carousel { gap: 0.5rem; }
-          .hc-nav { width: 2.25rem; height: 2.25rem; font-size: 1.2rem; }
-        }
 
         /* ── Card ── */
         .hc-card {
@@ -368,6 +361,8 @@ export default function HackathonCarousel({ items }) {
           cursor: pointer;
           width: fit-content;
           margin-top: auto;
+          position: relative;
+          z-index: 10;
           transition: background 240ms ease-out, transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
         }
         .hc-btn:hover { background: #1B66D1; transform: translateY(-2px); }
@@ -379,14 +374,21 @@ export default function HackathonCarousel({ items }) {
           .hc-btn { transition-duration: 0ms !important; }
         }
 
-        /* ── Mobile (≤ 600px): stack vertically ── */
+        /* ── Mobile (≤ 600px) ── */
         @media (max-width: 600px) {
           .hc-section {
             padding: clamp(16px, 4vw, 24px) 0 clamp(16px, 4vw, 22px);
+            overflow-x: hidden;
           }
           .hc-inner {
             padding: 0 clamp(16px, 5vw, 24px);
           }
+          .hc-carousel { gap: 0.5rem; }
+          .hc-nav { width: 2.25rem; height: 2.25rem; font-size: 1.2rem; }
+          .hc-carousel-viewport { overflow: hidden; }
+          .hc-grid-item.active { transform: scale(1); }
+          .hc-grid-item.prev,
+          .hc-grid-item.next { opacity: 0; transform: scale(0.95); }
           .hc-grid-item { flex: 1 1 100%; }
           .hc-heading { font-size: clamp(15px, 5vw, 18px); }
           .hc-header  { margin-bottom: clamp(10px, 2.5vw, 14px); }

@@ -130,11 +130,34 @@ const CSS = `
     margin: 0;
   }
   @media (max-width: 48rem) {
-    .phk-rm-track::before { left: 1rem; }
-    .phk-rm-row { grid-template-columns: 1rem auto 1fr; gap: 0.75rem; }
-    .phk-rm-half-left { display: none; }
-    .phk-rm-half-right { justify-content: flex-start; }
-    .phk-rm-card, .phk-rm-finale-card { max-width: 100%; }
+    .phk-rm-track::before { left: 0.5625rem; }
+    .phk-rm-row {
+      grid-template-columns: 1.125rem 1fr;
+      gap: 0.75rem;
+    }
+    .phk-rm-half-left {
+      display: flex;
+      grid-column: 2;
+      grid-row: 1;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .phk-rm-dot, .phk-rm-finale-dot {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .phk-rm-half-right {
+      grid-column: 2;
+      grid-row: 1;
+      justify-content: flex-start;
+    }
+    .phk-rm-card, .phk-rm-finale-card {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+    .phk-rm-card-title, .phk-rm-card-date, .phk-rm-finale-title, .phk-rm-finale-date {
+      white-space: normal;
+    }
   }
 `;
 
@@ -173,6 +196,7 @@ export default function PngHackathon2026Roadmap() {
       if (!trackRef.current) return;
       const cards = trackRef.current.querySelectorAll(".phk-rm-card, .phk-rm-finale-card");
       cards.forEach(c => { c.style.width = ""; });
+      if (window.innerWidth <= 768) return;
       const maxW = Math.max(...Array.from(cards).map(c => c.getBoundingClientRect().width));
       cards.forEach(c => { c.style.width = maxW + "px"; });
     }
