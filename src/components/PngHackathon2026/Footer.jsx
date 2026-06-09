@@ -167,6 +167,22 @@ export default function PngHackathon2026Footer() {
         @media (max-width: 37.5rem) {
           .phk-footer { padding: 2rem 1rem; }
           .phk-footer-inner { flex-direction: column; gap: 2rem; }
+          .phk-footer-contact-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 0.5rem;
+            row-gap: 0.2rem;
+            align-items: center;
+          }
+          .phk-footer-contact-row > svg {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            align-self: start;
+            margin-top: 0.15em;
+          }
+          .phk-footer-contact-row > a { grid-column: 2; }
+          .phk-footer-contact-row > span { display: none; }
+          .phk-footer-contact-row--websites { margin-top: 0.625rem; }
         }
       `}</style>
 
@@ -183,20 +199,18 @@ export default function PngHackathon2026Footer() {
                   digitalidinnovation@microsave.net
                 </a>
                 <span>|</span>
-                <a href="mailto:hackathon@ict.gov.pg">
-                  hackathon@ict.gov.pg
+                <a href="mailto:hackathon@digital.gov.pg">
+                  hackathon@digital.gov.pg
                 </a>
               </div>
               
               
-              <div className="phk-footer-contact-row">
+              <div className="phk-footer-contact-row phk-footer-contact-row--websites">
                 <GlobeIcon />
                 <a href="https://www.ict.gov.pg" target="_blank" rel="noopener noreferrer">
                   www.ict.gov.pg
                 </a>
-              </div>
-              <div className="phk-footer-contact-row">
-                <GlobeIcon />
+                <span>|</span>
                 <a href="https://www.microsave.net" target="_blank" rel="noopener noreferrer">
                   www.microsave.net
                 </a>
