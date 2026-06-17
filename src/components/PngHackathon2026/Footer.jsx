@@ -1,3 +1,7 @@
+import { BASE_PATH } from "@/lib/siteConfig";
+
+const bp = `${BASE_PATH}/png-2026`;
+
 function XIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
@@ -98,9 +102,21 @@ export default function PngHackathon2026Footer() {
 
         .phk-footer-contact-row {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 0.5rem;
           color: #000000;
+        }
+
+        .phk-footer-contact-row svg {
+          flex-shrink: 0;
+          margin-top: 0.2em;
+        }
+
+        /* Wraps as normal inline text so a second line aligns under the first email, not the icon */
+        .phk-footer-contact-row-text {
+          flex: 1 1 0%;
+          min-width: 0;
+          line-height: 1.5;
         }
 
         /* Figma: Albert Sans 400, 21px */
@@ -110,7 +126,6 @@ export default function PngHackathon2026Footer() {
           font-size: clamp(0.875rem, 1.094vw, 1.3125rem);
           color: #000000;
           text-decoration: none;
-          line-height: 1;
         }
         .phk-footer-contact-row a:hover { text-decoration: underline; }
 
@@ -126,7 +141,7 @@ export default function PngHackathon2026Footer() {
         .phk-footer-tagline {
           font-family: "Albert Sans", sans-serif;
           font-weight: 400;
-          font-size: clamp(0.8125rem, 0.9375vw, 1.125rem);
+          font-size: clamp(0.875rem, 1.094vw, 1.3125rem);
           color: #000000;
           margin: 0;
           line-height: 1.4;
@@ -141,9 +156,8 @@ export default function PngHackathon2026Footer() {
         .phk-footer-socials-label {
           font-family: "Albert Sans", sans-serif;
           font-weight: 600;
-          font-size: clamp(0.8125rem, 0.9375vw, 1.125rem);
+          font-size: clamp(0.875rem, 1.094vw, 1.3125rem);
           color: #000000;
-          min-width: 6rem;
         }
 
         .phk-footer-social-link {
@@ -164,25 +178,40 @@ export default function PngHackathon2026Footer() {
           color: #ffffff;
         }
 
+        /* ── Partners ── */
+        .phk-footer-partners {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+          flex: 1;
+          min-width: 14rem;
+        }
+
+        .phk-footer-partners-logos {
+          display: flex;
+          align-items: center;
+          gap: 1.75rem;
+          flex-wrap: wrap;
+        }
+
+        .phk-footer-partner-logo {
+          display: block;
+          width: auto;
+        }
+
+        /* Figma: 123×113 */
+        .phk-footer-partner-logo--cefi {
+          height: clamp(3.25rem, 5.885vw, 7.0625rem);
+        }
+
+        /* Figma: 224×76 */
+        .phk-footer-partner-logo--tech5 {
+          height: clamp(2.25rem, 3.958vw, 4.75rem);
+        }
+
         @media (max-width: 37.5rem) {
           .phk-footer { padding: 2rem 1rem; }
           .phk-footer-inner { flex-direction: column; gap: 2rem; }
-          .phk-footer-contact-row {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            column-gap: 0.5rem;
-            row-gap: 0.2rem;
-            align-items: center;
-          }
-          .phk-footer-contact-row > svg {
-            grid-column: 1;
-            grid-row: 1 / 3;
-            align-self: start;
-            margin-top: 0.15em;
-          }
-          .phk-footer-contact-row > a { grid-column: 2; }
-          .phk-footer-contact-row > span { display: none; }
-          .phk-footer-contact-row--websites { margin-top: 0.625rem; }
         }
       `}</style>
 
@@ -195,25 +224,28 @@ export default function PngHackathon2026Footer() {
             <div className="phk-footer-contact-items">
               <div className="phk-footer-contact-row">
                 <EmailIcon />
-                <a href="mailto:digitalidinnovation@microsave.net">
-                  digitalidinnovation@microsave.net
-                </a>
-                <span>|</span>
-                <a href="mailto:hackathon@digital.gov.pg">
-                  hackathon@digital.gov.pg
-                </a>
+                <div className="phk-footer-contact-row-text">
+                  <a href="mailto:digitalidinnovation@microsave.net">
+                    digitalidinnovation@microsave.net
+                  </a>
+                  {" "}{" "}
+                  <a href="mailto:hackathon@digital.gov.pg">
+                    hackathon@digital.gov.pg
+                  </a>
+                </div>
               </div>
-              
-              
+
               <div className="phk-footer-contact-row phk-footer-contact-row--websites">
                 <GlobeIcon />
-                <a href="https://www.ict.gov.pg" target="_blank" rel="noopener noreferrer">
-                  www.ict.gov.pg
-                </a>
-                <span>|</span>
-                <a href="https://www.microsave.net" target="_blank" rel="noopener noreferrer">
-                  www.microsave.net
-                </a>
+                <div className="phk-footer-contact-row-text">
+                  <a href="https://www.ict.gov.pg" target="_blank" rel="noopener noreferrer">
+                    www.ict.gov.pg
+                  </a>
+                  {" "}<span>|</span>{" "}
+                  <a href="https://www.microsave.net" target="_blank" rel="noopener noreferrer">
+                    www.microsave.net
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -225,7 +257,7 @@ export default function PngHackathon2026Footer() {
 
             {/* MSC — X, Facebook, LinkedIn */}
             <div className="phk-footer-socials-row">
-              <span className="phk-footer-socials-label">MSC Socials</span>
+              <span className="phk-footer-socials-label">MSC</span>
               <a className="phk-footer-social-link" href="https://x.com/MicroSave" target="_blank" rel="noopener noreferrer" aria-label="MSC on X">
                 <XIcon />
               </a>
@@ -239,12 +271,27 @@ export default function PngHackathon2026Footer() {
 
             {/* DICT — Facebook, LinkedIn only (no Twitter) */}
             <div className="phk-footer-socials-row">
-              <span className="phk-footer-socials-label">DICT Socials</span>
+              <span className="phk-footer-socials-label">DICT
+              
+              </span>
               <a className="phk-footer-social-link" href="https://www.facebook.com/pngdepartmentofict" target="_blank" rel="noopener noreferrer" aria-label="DICT on Facebook">
                 <FBIcon />
               </a>
               <a className="phk-footer-social-link" href="https://www.linkedin.com/company/p-n-g-department-of-communication-information-technology-and-energy/" target="_blank" rel="noopener noreferrer" aria-label="DICT on LinkedIn">
                 <LIIcon />
+              </a>
+            </div>
+          </div>
+
+          {/* Partners */}
+          <div className="phk-footer-partners">
+            <p className="phk-footer-heading">Partners</p>
+            <div className="phk-footer-partners-logos">
+              <a href="https://www.thecefi.org/" target="_blank" rel="noopener noreferrer">
+                <img className="phk-footer-partner-logo phk-footer-partner-logo--cefi" src={`${bp}/cefi_logo.svg`} alt="CEFI" />
+              </a>
+              <a href="https://tech5.ai/" target="_blank" rel="noopener noreferrer">
+                <img className="phk-footer-partner-logo phk-footer-partner-logo--tech5" src={`${bp}/tech_logo.svg`} alt="TECH5" />
               </a>
             </div>
           </div>
