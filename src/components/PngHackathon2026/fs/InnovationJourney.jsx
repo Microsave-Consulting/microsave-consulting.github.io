@@ -5,8 +5,14 @@ const PHASE1_ITEMS = [
         Application submission for Financial Services track on DTS portal: <a href="https://hackathon.dts.gov.pg/login" target="_blank" rel="noopener noreferrer" className="fs-ij-link">https://hackathon.dts.gov.pg/login</a>
       </>
     ),
+  },{
+    text: <>Weekly expert webinars on SevisPass and use case design. Join us on the 12th of June for the {" "}
+      <a href="https://microsave-net.zoom.us/j/86307562087" target="_blank" rel="noopener noreferrer" className="fs-ij-link">
+       introductory webinar
+      </a>
+      .
+    </>,
   },
-  { text: "Weekly expert webinars on SevisPass and use case design." },
 ];
 
 const PHASE2_ITEMS = [

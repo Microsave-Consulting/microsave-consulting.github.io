@@ -6,7 +6,14 @@ const PHASE1_ITEMS = [
       </a>
     </>,
   },
-  { text: "Weekly expert webinars on SevisPass and use case design" },
+  {
+    text: <>Weekly expert webinars on SevisPass and use case design. Join us on the 12th of June for the {" "}
+      <a href="https://microsave-net.zoom.us/j/86307562087" target="_blank" rel="noopener noreferrer" className="hei-ij-link">
+       introductory webinar
+      </a>
+      .
+    </>,
+  },
   { text: "The top six submissions from the student teams will be shortlisted and advance to the prototyping phase." },
 ];
 
