@@ -46,6 +46,18 @@ export default function PngHackathon2026Hero() {
           pointer-events: none;
         }
 
+        /* Student photo — Figma: 834×616 at left 1091/1920, bottom-anchored to the hero floor */
+        .phk-hero-student {
+          position: absolute;
+          z-index: 1;
+          left: 56.823%;
+          bottom: -2%;
+          width: 43.4375%;
+          height: auto;
+          display: block;
+          pointer-events: none;
+        }
+
         /* Pill badge — Figma: 503×37, padding 8/16/8/16, Albert Sans 700 18px ls 1.2px */
         .phk-hero-pill {
           display: inline-flex;
@@ -172,20 +184,37 @@ export default function PngHackathon2026Hero() {
           transform: translateY(-1px) scale(1.01);
         }
 
-        /* Organized by — line starts from left column edge and extends into illustration */
+        /* Organized by / Supported by — aligned with the column's left edge, extending right into the illustration */
         .phk-hero-orgs {
-          width: 50vw;
+          width: 68vw;
           margin-left: -7.2vw;
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
           padding-top: clamp(1.5rem, 2.083vw, 2.5rem);
           padding-left: 7.2vw;
-          padding-right: 4vw;
+          margin-top: clamp(2rem, 3.698vw, 4.4375rem);
+          box-sizing: border-box;
+        }
+
+        /* Two groups side by side: Organized By (3 logos) | Supported By (1 logo) */
+        .phk-hero-orgs-groups {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: clamp(1.25rem, 2vw, 2rem);
+          flex-wrap: nowrap;
+          width: 100%;
+        }
+
+        .phk-hero-orgs-group {
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: clamp(0.875rem, 1.25vw, 1.5rem);
-          margin-top: clamp(2rem, 3.698vw, 4.4375rem);
-          box-sizing: border-box;
+        }
+
+        .phk-hero-orgs-divider {
+          align-self: stretch;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.3);
         }
 
         /* Figma: Albert Sans 700, 19.5px, ls 3.6px, Uppercase, #FFFFFF, Center */
@@ -198,35 +227,82 @@ export default function PngHackathon2026Hero() {
           color: #ffffff;
           margin: 0;
           text-align: center;
+          white-space: nowrap;
         }
 
         .phk-hero-orgs-logos {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: clamp(1.5rem, 2.083vw, 2.5rem);
+          gap: clamp(1.25rem, 1.8vw, 2.25rem);
           flex-wrap: wrap;
-          width: 100%;
         }
 
-        .phk-hero-orgs-logos img {
-          height: clamp(4rem, 5.5vw, 6.5rem) !important;
+        .phk-hero-orgs-logos img,
+        .phk-hero-supported-logo {
+          height: clamp(3.5rem, 5vw, 6rem) !important;
           max-height: none !important;
           width: auto !important;
           display: block;
         }
 
         /* Responsive */
+
+        /* Tablet and below — the photo overlay's left% and the orgs row's rem-floored
+           sizing stop scaling at the same rate, so below this width they start to
+           collide. Drop the overlay (the base banner already bakes in the same
+           illustration, cropped via object-fit) and let the orgs row wrap freely. */
+        @media (max-width: 64rem) {
+          .phk-hero-student {
+            display: none;
+          }
+
+          .phk-hero-orgs {
+            width: 100%;
+            margin-left: 0;
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          .phk-hero-orgs-groups {
+            flex-wrap: wrap;
+          }
+
+          .phk-hero-orgs-divider {
+            display: none;
+          }
+        }
+
         @media (max-width: 48rem) {
           .phk-hero-left {
             width: 100%;
             padding: 2rem 5% 2rem;
+          }
+
+          /* Shrunk so all 3 logos stay on one line instead of wrapping */
+          .phk-hero-orgs-logos {
+            gap: 0.875rem;
+          }
+
+          .phk-hero-orgs-logos img,
+          .phk-hero-supported-logo {
+            height: 2.5rem !important;
           }
         }
 
         @media (max-width: 30rem) {
           .phk-hero-badge { font-size: 0.75rem; padding: 0.375rem 0.75rem; }
           .phk-hero-pill { font-size: 0.6rem; }
+
+          .phk-hero-orgs-logos {
+            justify-content: flex-start;
+            gap: 0.625rem;
+          }
+
+          .phk-hero-orgs-logos img,
+          .phk-hero-supported-logo {
+            height: 2.125rem !important;
+          }
         }
       `}</style>
 
@@ -278,11 +354,32 @@ export default function PngHackathon2026Hero() {
           <a className="phk-hero-btn" href="https://hackathon.dts.gov.pg/register" target="_blank" rel="noopener noreferrer">Apply for Hackathon</a>
 
           <div className="phk-hero-orgs">
-            <p className="phk-hero-orgs-label">ORGANIZED BY</p>
-            <div className="phk-hero-orgs-logos">
-              <img src={`${bp}/PNG.svg`} alt="Department of ICT, Papua New Guinea" />
-              <img src={`${bp}/dts_logo.svg`} alt="DTS26" />
-              <img src={`${bp}/MSC_White_logo.svg`} alt="MicroSave Consulting" />
+            <div className="phk-hero-orgs-groups">
+              <div className="phk-hero-orgs-group">
+                <p className="phk-hero-orgs-label">ORGANIZED BY</p>
+                <div className="phk-hero-orgs-logos">
+                  <a href="https://www.ict.gov.pg/" target="_blank" rel="noopener noreferrer">
+                    <img src={`${bp}/PNG.svg`} alt="Department of ICT, Papua New Guinea" />
+                  </a>
+                  <a href="https://dts.gov.pg/" target="_blank" rel="noopener noreferrer">
+                    <img src={`${bp}/dts_logo.svg`} alt="DTS26" />
+                  </a>
+                  <a href="https://www.microsave.net/" target="_blank" rel="noopener noreferrer">
+                    <img src={`${bp}/MSC_White_logo.svg`} alt="MicroSave Consulting" />
+                  </a>
+                </div>
+              </div>
+              <div className="phk-hero-orgs-divider" />
+              <div className="phk-hero-orgs-group">
+                <p className="phk-hero-orgs-label">SUPPORTED BY</p>
+                <a href="https://www.dfat.gov.au/" target="_blank" rel="noopener noreferrer">
+                  <img
+                    className="phk-hero-supported-logo"
+                    src={`${bp}/ag_logo.svg`}
+                    alt="Australian Government"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -292,6 +389,13 @@ export default function PngHackathon2026Hero() {
           className="phk-hero-banner"
           src={`${bp}/banner_png_2026.svg`}
           alt="PNG National Digital ID Hackathon 2026"
+        />
+
+        {/* Student photo — overlaid at its Figma position, bottom-anchored to the hero floor */}
+        <img
+          className="phk-hero-student"
+          src={`${BASE_PATH}/banner_student.svg`}
+          alt="Students collaborating on the PNG Digital ID hackathon"
         />
       </section>
     </>
