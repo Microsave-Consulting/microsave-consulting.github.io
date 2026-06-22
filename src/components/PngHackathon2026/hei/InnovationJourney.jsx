@@ -411,7 +411,7 @@ export default function HeiInnovationJourney() {
               </div>
             </div>
             <div className="hei-ij-right">
-              <PhaseCard title="Upskilling and ideation" date="June 4, 2026 – June 21, 2026">
+              <PhaseCard title="Upskilling and ideation" date="June 4, 2026 – June 23, 2026">
                 <div className="hei-ij-items">
                   {PHASE1_ITEMS.map((item, i) => (
                     <div key={i} className="hei-ij-item">
@@ -433,7 +433,7 @@ export default function HeiInnovationJourney() {
               </div>
             </div>
             <div className="hei-ij-right">
-              <PhaseCard title="Prototyping and development" date="June 24, 2026 – July 15, 2026">
+              <PhaseCard title="Prototyping and development" date="June 26, 2026 – July 15, 2026">
                 <div className="hei-ij-items-2col">
                   {[...PHASE2_LEFT, ...PHASE2_RIGHT].map((text, i) => (
                     <div key={i} className="hei-ij-item">

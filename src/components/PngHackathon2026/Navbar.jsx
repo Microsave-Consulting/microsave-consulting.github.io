@@ -10,7 +10,7 @@ const NAV_LINKS = [
 
 const TRACK_LINKS = [
   { label: "HEI Track",     href: "/png-hackathon-2026/hei-track" },
-  { label: "Startup Track", href: "/png-hackathon-2026/fs-track"  },
+  { label: "Financial Services Track", href: "/png-hackathon-2026/fs-track"  },
 ];
 
 const CSS = `

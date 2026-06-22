@@ -349,7 +349,7 @@ export default function PngHackathon2026Hero() {
             </span>
           </div>
 
-          <p className="phk-hero-regclose">REGISTRATION CLOSES JUNE 21, 2026</p>
+          <p className="phk-hero-regclose">REGISTRATION CLOSES JUNE 23, 2026</p>
 
           <a className="phk-hero-btn" href="https://hackathon.dts.gov.pg/register" target="_blank" rel="noopener noreferrer">Apply for Hackathon</a>
 

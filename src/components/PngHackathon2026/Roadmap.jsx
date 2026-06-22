@@ -163,11 +163,11 @@ const CSS = `
 
 const MILESTONES = [
   { date: "JUNE 4, 2026",           title: "Applications Open",                  side: "left"  },
-  { date: "JUNE 21, 2026",          title: "Registration Deadline",              side: "right" },
-  { date: "JUNE 21, 2026",          title: "Application Submission Deadline",    side: "left"  },
-  { date: "JUNE 23, 2026",          title: "Shortlisted Teams Announced",        side: "right" },
-  { date: "JUNE 24, 2026",          title: "Team Onboarding",                    side: "left"  },
-  { date: "JUNE 25 – JULY 15, 2026",title: "Prototype Development & Mentorship", side: "right" },
+  { date: "JUNE 23, 2026",          title: "Registration Deadline",              side: "right" },
+  { date: "JUNE 23, 2026",          title: "Application Submission Deadline",    side: "left"  },
+  { date: "JUNE 25, 2026",          title: "Shortlisted Teams Announced",        side: "right" },
+  { date: "JUNE 26, 2026",          title: "Team Onboarding",                    side: "left"  },
+  { date: "JUNE 26 – JULY 15, 2026",title: "Prototype Development & Mentorship", side: "right" },
   { date: "JULY 16, 2026",          title: "Prototype Submission",               side: "left"  },
 ];
 

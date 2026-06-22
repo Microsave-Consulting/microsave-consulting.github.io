@@ -390,7 +390,7 @@ export default function FsInnovationJourney() {
               </div>
             </div>
             <div className="fs-ij-right">
-              <PhaseCard title="Ideation phase" date="June 4, 2026 – June 21, 2026">
+              <PhaseCard title="Ideation phase" date="June 4, 2026 – June 23, 2026">
                 <div className="fs-ij-items">
                   {PHASE1_ITEMS.map((item, idx) => (
                     <div key={idx} className="fs-ij-item">
@@ -415,7 +415,7 @@ export default function FsInnovationJourney() {
               </div>
             </div>
             <div className="fs-ij-right">
-              <PhaseCard title="Prototyping and development" date="June 24, 2026 – July 15, 2026">
+              <PhaseCard title="Prototyping and development" date="June 26, 2026 – July 15, 2026">
                 <div className="fs-ij-items-2col">
                   {PHASE2_ITEMS.map((text, idx) => (
                     <div key={idx} className="fs-ij-item">

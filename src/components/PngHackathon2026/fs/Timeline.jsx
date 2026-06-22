@@ -10,7 +10,7 @@ export default function FsTimeline() {
     },
     {
       label: "Registration deadline",
-      detail: "June 21, 2026",
+      detail: "June 23, 2026",
     },
     {
       label: "Shortlisted teams announced",
